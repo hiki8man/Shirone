@@ -26,6 +26,8 @@
 <li><code>category</code>：文章所属分类</li>
 <li><code>tags</code>：标签列表</li>
 <li><code>pinned</code>：是否置顶</li>
+<li><code>series</code>：所属系列 slug，对应 <code>content/series/&lt;slug&gt;.md</code></li>
+<li><code>seriesOrder</code>：系列内排序序号（整数），缺省时按发布日期排序</li>
 <li><code>draft</code>：是否为草稿，草稿在生产构建时会被自动过滤</li>
 <li><code>comment</code>：是否开启本篇文章的评论区</li>
 </ul>

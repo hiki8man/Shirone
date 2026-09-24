@@ -11,6 +11,8 @@
 &lt;li&gt;&lt;code&gt;category&lt;/code&gt;：文章所属分类&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;tags&lt;/code&gt;：标签列表&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;pinned&lt;/code&gt;：是否置顶&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;series&lt;/code&gt;：所属系列 slug，对应 &lt;code&gt;content/series/&amp;lt;slug&amp;gt;.md&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;seriesOrder&lt;/code&gt;：系列内排序序号（整数），缺省时按发布日期排序&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;draft&lt;/code&gt;：是否为草稿，草稿在生产构建时会被自动过滤&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;comment&lt;/code&gt;：是否开启本篇文章的评论区&lt;/li&gt;
 &lt;/ul&gt;
