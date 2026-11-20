@@ -1,20 +1,27 @@
 name: Deploy Shirone Blog
 
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [content-updated]     # ← 改成和内容仓派发的一致
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pages: write
   id-token: write
 
-on:
-  push:
-    branches: [main]
-  repository_dispatch:
-    types: [content-update] # 响应内容仓库发送的派发事件
-  workflow_dispatch:
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout Theme Repo
         uses: actions/checkout@v4
@@ -40,17 +47,11 @@ jobs:
           pnpm content:sync
           pnpm build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-  
+
       - name: Deploy to Pages
         id: deployment
         uses: actions/deploy-pages@v4
